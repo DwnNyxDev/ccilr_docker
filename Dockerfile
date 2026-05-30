@@ -58,4 +58,17 @@ RUN pip install --no-cache-dir "numpy<1.25.0" scipy transforms3d opencv-contrib-
 # Kill the bell!
 RUN echo "set bell-style none" >> /etc/inputrc
 
+# Copy in default config files
+COPY ./config/bash.bashrc /etc/
+
+# Create a user
+RUN useradd -ms /bin/bash ccilr && \
+    echo 'ccilr:ccilr@ros' | chpasswd && \
+    usermod -aG sudo ccilr
+
+COPY ./entrypoint.sh /usr/bin/entrypoint.sh
+COPY ./xstartup.sh /usr/bin/xstartup.sh
+RUN chmod +x /usr/bin/entrypoint.sh /usr/bin/xstartup.sh
+
+USER ccilr
 WORKDIR /home/ccilr

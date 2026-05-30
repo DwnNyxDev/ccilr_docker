@@ -6,7 +6,6 @@ mkdir -p $HOME/.log
 # Set up ROS
 mkdir -p $HOME/ccilr_ws/src
 /bin/bash -c 'cd $HOME/ccilr_ws; colcon build --symlink-install'
-/bin/bash -c 'mkdir -p $HOME/.rviz2; cp /tmp/default.rviz $HOME/.rviz2'
 
 # Start the VNC server
 vncserver -SecurityTypes None -xstartup xstartup.sh > $HOME/.log/TigerVNC.log 2>&1
