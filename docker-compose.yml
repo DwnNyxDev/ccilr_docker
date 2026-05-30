@@ -1,0 +1,9 @@
+services:
+  ccilr:
+    build: .
+    image: vatelvandell/ccilr
+    ports:
+      - 6080:6080
+    entrypoint: entrypoint.sh
+    volumes:
+      - ./home:/home/racecar #TODO: Change this
